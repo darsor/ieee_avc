@@ -1,0 +1,12 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <arg name="bag" default="false" />
+  <node name="bag" pkg="rosbag" type="record" args="-a" if="$(arg bag)"/>
+
+  <group ns="teleop">
+    <!-- joystick to ackermann command -->
+    <include file="$(find avc)/launch/includes/inputs/joy_teleop.launch.xml" > </include>
+  </group>
+
+</launch>
