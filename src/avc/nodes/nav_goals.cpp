@@ -12,30 +12,54 @@ struct Poses {
 int main(int argc, char** argv){
     ros::init(argc, argv, "nav_goals");
     ros::param::set("/free_goal_vel", true);
-    ros::param::set("/xy_goal_tolerance", 0.2);
-    ros::param::set("/yaw_goal_tolerance", 0.5);
+    ros::param::set("/xy_goal_tolerance", 0.4);
+    ros::param::set("/yaw_goal_tolerance", 1.0);
 
-    int numPoses = 4;
+
+    int numPoses = 7;
     struct Poses* poses = new Poses[numPoses];
-    poses[0].pos[0] = 23.090;
-    poses[0].pos[1] = 22.641;
-    poses[0].rot[0] = 0.998;
-    poses[0].rot[1] = 0.068;
 
-    poses[1].pos[0] = -2.735;
-    poses[1].pos[1] = 24.452;
-    poses[1].rot[0] = 0.994;
-    poses[1].rot[1] = 0.111;
+    //Position(12.840, -1.076, 0.000), Orientation(0.000, 0.000, -0.065, 0.998) = Angle: -0.131
+    poses[0].pos[0] = 12.840;
+    poses[0].pos[1] = -1.076;
+    poses[0].rot[0] = -0.065;
+    poses[0].rot[1] = 0.998;
 
-    poses[2].pos[0] = -21.556;
-    poses[2].pos[1] = 10.139;
-    poses[2].rot[0] = -0.797;
-    poses[2].rot[1] = 0.604;
+    //Position(8.433, -14.722, 0.000), Orientation(0.000, 0.000, -0.732, 0.681) = Angle: -1.642
+    poses[1].pos[0] = 8.433;
+    poses[1].pos[1] = -14.722;
+    poses[1].rot[0] = -0.732;
+    poses[1].rot[1] = 0.681;
 
-    poses[3].pos[0] = -8.291;
-    poses[3].pos[1] = 0.322;
-    poses[3].rot[0] = -0.188;
-    poses[3].rot[1] = 0.982;
+    //Position(8.202, -22.073, 0.000), Orientation(0.000, 0.000, -0.753, 0.658) = Angle: -1.706
+    poses[2].pos[0] = 8.202;
+    poses[2].pos[1] = -22.073;
+    poses[2].rot[0] = -0.753;
+    poses[2].rot[1] = 0.658;
+
+    //Position(-3.362, -29.020, 0.000), Orientation(0.000, 0.000, 0.999, 0.032) = Angle: 3.077
+    poses[3].pos[0] = -3.362;
+    poses[3].pos[1] = -29.020;
+    poses[3].rot[0] = 0.999;
+    poses[3].rot[1] = 0.032;
+
+    //Position(-6.322, -19.478, 0.000), Orientation(0.000, 0.000, 0.656, 0.754) = Angle: 1.432
+    poses[4].pos[0] = -6.322;
+    poses[4].pos[1] = -19.478;
+    poses[4].rot[0] = 0.656;
+    poses[4].rot[1] = 0.754;
+
+    //Position(-6.001, -10.733, 0.000), Orientation(0.000, 0.000, 0.619, 0.785) = Angle: 1.336
+    poses[5].pos[0] = -6.001;
+    poses[5].pos[1] = -10.733;
+    poses[5].rot[0] = 0.619;
+    poses[5].rot[1] = 0.785;
+
+    //Position(3.628, 0.330, 0.000), Orientation(0.000, 0.000, -0.050, 0.999) = Angle: -0.101
+    poses[6].pos[0] = 3.628;
+    poses[6].pos[1] = 0.330;
+    poses[6].rot[0] = -0.050;
+    poses[6].rot[1] = 0.999;
 
     //tell the action client that we want to spin a thread by default
     MoveBaseClient ac("move_base", true);
@@ -66,7 +90,8 @@ int main(int argc, char** argv){
         }
         else {
             ROS_INFO("Failed to reach goal #%d", i);
-            break;
+	    --i;
+	    continue;
         }
     }
 
