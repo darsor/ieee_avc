@@ -1,0 +1,4 @@
+nmea_navsat_driver:
+    frame_id: base_link_gps
+    port: /dev/ttyUSB0
+    baud: 57600

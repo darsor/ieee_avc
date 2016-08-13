@@ -1,0 +1,22 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <!-- imu -->
+  <arg name="imu_config" default="$(find avc)/config/imu.yaml" />
+  <node pkg="razor_imu_9dof" type="imu_node.py" name="imu_node" output="screen">
+    <rosparam file="$(arg imu_config)" command="load" />
+  </node>
+
+  <!-- laser -->
+  <arg name="laser_config" default="$(find avc)/config/laser.yaml" />
+  <node pkg="sick_tim" type="sick_tim551_2050001" name="laser_node" respawn="false" output="screen">
+    <rosparam file="$(arg laser_config)" command="load" />
+  </node>
+
+  <!-- gps -->
+  <arg name="gps_config" default="$(find avc)/config/gps.yaml" />
+  <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="gps_node" output="screen">
+    <rosparam file="$(arg gps_config)" command="load" />
+  </node>
+
+</launch>
