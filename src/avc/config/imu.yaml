@@ -3,12 +3,12 @@ port: /dev/ttyUSB0
 
 ##### Calibration ####
 ### accelerometer
-accel_x_min: -250.0
-accel_x_max: 250.0
-accel_y_min: -250.0
-accel_y_max: 250.0
-accel_z_min: -250.0
-accel_z_max: 250.0
+accel_x_min: -275.0
+accel_x_max: 252.0
+accel_y_min: -259.0
+accel_y_max: 268.0
+accel_z_min: -271.0
+accel_z_max: 244.0
 
 ### magnetometer
 # standard calibration

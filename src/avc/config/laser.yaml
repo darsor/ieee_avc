@@ -1,5 +1,4 @@
-laser_node:
-    frame_id: base_link_laser
-    hostname: 192.168.1.43
-    port: 2112
-    timelimit: 5
+frame_id: base_link_laser
+hostname: 192.168.1.43
+port: 2112
+timelimit: 5

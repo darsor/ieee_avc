@@ -5,7 +5,7 @@
     <!-- joystick to ackermann command -->
     <include file="$(find avc)/launch/includes/inputs/joy_teleop.launch.xml" > </include>
     <!-- default (zero) ackermann command -->
-    <node name="zero_ackermann_cmd" pkg="rostopic" type="rostopic" args="pub -r 4 ackermann_cmd_mux/input/default ackermann_msgs/AckermannDriveStamped '{header: auto, drive: {steering_angle: 0.5, speed: 0.0} }'" />
+    <node name="zero_ackermann_cmd" pkg="rostopic" type="rostopic" args="pub -r 4 ackermann_cmd_mux/input/default ackermann_msgs/AckermannDriveStamped '{header: auto, drive: {steering_angle: 0.0, speed: 0.0} }'" />
     <!-- priority-based command multiplexer -->
     <include file="$(find ackermann_cmd_mux)/launch/standalone.launch">
       <arg name="nodelet_manager_name" value="ackermann_cmd_mux_nodelet_manager" />
