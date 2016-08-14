@@ -19,7 +19,11 @@
 
     <!-- start electronic speed controller driver -->
     <include file="$(find avc)/launch/includes/vesc/vesc.launch.xml" > </include>
+  </group>
 
+  <group ns="sensors">
+    <!-- start sensors -->
+    <include file="$(find avc)/launch/includes/sensors/sensors.launch.xml" > </include>
   </group>
 
 </launch>

@@ -1,7 +1,7 @@
 <!-- -*- mode: XML -*- -->
 <launch>
 
-
+  <!-- start teleop -->
   <group ns="teleop">
     <!-- joystick to ackermann command -->
     <include file="$(find avc)/launch/includes/inputs/joy_teleop.launch.xml" > </include>
@@ -20,6 +20,23 @@
     <!-- start electronic speed controller driver -->
     <include file="$(find avc)/launch/includes/vesc/vesc.launch.xml" > </include>
 
+  </group>
+
+  <!-- start sensors -->
+  <group ns="sensors">
+    <include file="$(find avc)/launch/includes/sensors/sensors.launch.xml" />
+  </group>
+
+  <!-- start localization -->
+  <group ns="localization">
+    <!-- start GPS navsat transform node -->
+    <include file="$(find avc)/launch/includes/localization/navsat_transform.launch.xml" > </include>
+  
+    <!-- start absolute robot_localization node -->
+    <include file="$(find avc)/launch/includes/localization/ekf_global_localization.launch.xml" > </include>
+  
+    <!-- start local robot_localization node -->
+    <include file="$(find avc)/launch/includes/localization/ekf_local_localization.launch.xml" > </include>
   </group>
 
 </launch>

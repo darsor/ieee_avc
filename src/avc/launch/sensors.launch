@@ -1,10 +1,9 @@
 <!-- -*- mode: XML -*- -->
 <launch>
 
-<!-- start imu, gps, and laser scanner -->
-<include file="$(find avc)/launch/includes/sensors/sensors.launch.xml" />
-
-<!-- static transforms, e.g. base_link to imu -->
-<include file="$(find avc)/launch/includes/tf/static_transforms.launch.xml" />
+  <group ns="sensors">
+    <!-- start sensors -->
+    <include file="$(find avc)/launch/includes/sensors/sensors.launch.xml" />
+  </group>
 
 </launch>

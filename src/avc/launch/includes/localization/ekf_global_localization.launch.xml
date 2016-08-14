@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_global_localization" clear_params="true">
+    <rosparam command="load" file="$(find avc)/config/ekf_global.yaml" />
+
+   <!--  Placeholder for output topic remapping -->
+    <remap from="odometry/filtered" to="odometry/global/filtered"/>
+
+  </node>
+</launch>
