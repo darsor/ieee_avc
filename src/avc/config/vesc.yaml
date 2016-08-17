@@ -1,6 +1,6 @@
 
 # erpm (electrical rpm) = 3000 * speed (meters / second) + 0
-speed_to_erpm_gain: 4600
+speed_to_erpm_gain: 10000.0
 speed_to_erpm_offset: 0.0
 
 # servo value (0 to 1) =  -1.4 * steering angle (radians) + 0.5
@@ -22,7 +22,7 @@ vesc_driver:
   brake_min: 0.0
   brake_max: 0.0
   speed_min: -4000
-  speed_max: 6000
+  speed_max: 14000
   position_min: 0.0
   position_max: 0.0
   servo_min: 0.15
