@@ -8,6 +8,7 @@
 #include <sstream>
 #include <iostream>
 #include <iomanip>
+#include <cstdio>
 
 #include <serial/serial.h>
 #include <boost/crc.hpp>

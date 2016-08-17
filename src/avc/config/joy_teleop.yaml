@@ -1,5 +1,5 @@
 joy_node:
-  deadzone: 0.01
+  deadzone: 0.1
   autorepeat_rate: 20
   coalesce_interval: 0.01
 
@@ -8,7 +8,7 @@ teleop:
     type: topic
     message_type: ackermann_msgs/AckermannDriveStamped
     topic_name: ackermann_cmd_mux/input/teleop
-    deadman_buttons: [4]
+    deadman_buttons: [5]
     axis_mappings:
       -
         axis: 1

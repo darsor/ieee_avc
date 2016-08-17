@@ -363,6 +363,13 @@ VescPacketSetServoPos::VescPacketSetServoPos(double servo_pos) :
   uint16_t crc = crc_calc.checksum();
   *(frame_->end() - 3) = static_cast<uint8_t>(crc >> 8);
   *(frame_->end() - 2) = static_cast<uint8_t>(crc & 0xFF);
+
+  /*printf("VESC MESSAGE: ");
+  for (int i=0; i<5; ++i) {
+    printf("%02x ", *(frame_->begin()+i));
+  }
+  printf("\n");*/
+
 }
 
 } // namespace vesc_driver
