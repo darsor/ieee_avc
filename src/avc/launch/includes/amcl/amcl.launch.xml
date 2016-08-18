@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="amcl" type="amcl" name="amcl">
+    <rosparam command="load" file="$(find avc)/config/amcl.yaml" />
+
+    <remap from="scan" to="/sensors/scan"/>
+    <remap from="map" to="/map/map"/>
+
+  </node>
+</launch>
