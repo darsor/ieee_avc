@@ -1,4 +1,3 @@
-#odom_model_type: "diff"
 #odom_alpha5: 0.1
 #transform_tolerance: 0.2 
 #gui_publish_rate: 10.0
