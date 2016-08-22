@@ -1,5 +1,5 @@
 frame_id: map
-#image: path/to/image.png
+image: "$(find avc)/map/map.pgm"
 #resolution: 
 origin: [0.0, 0.0, 0.0]
 occupied_thresh: 0.65
