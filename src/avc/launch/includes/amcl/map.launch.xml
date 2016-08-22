@@ -1,5 +1,4 @@
 <launch>
-  <node pkg="map_server" type="map_server" name="map_server">
-    <rosparam command="load" file="$(find avc)/config/map.yaml" />
-  </node>
+  <arg name="map_file" default="$(find avc)/map/map.yaml"/>
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)"/>
 </launch>

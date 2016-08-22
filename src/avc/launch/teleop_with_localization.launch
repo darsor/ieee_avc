@@ -30,7 +30,7 @@
   <!-- start localization -->
   <group ns="localization">
     <!-- start GPS navsat transform node -->
-    <!-- <include file="$(find avc)/launch/includes/localization/navsat_transform.launch.xml" > </include> -->
+    <include file="$(find avc)/launch/includes/localization/navsat_transform.launch.xml" > </include>
   
     <!-- start absolute robot_localization node -->
     <include file="$(find avc)/launch/includes/localization/ekf_global_localization.launch.xml" > </include>

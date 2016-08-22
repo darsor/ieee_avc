@@ -4,6 +4,7 @@
 
     <remap from="scan" to="/sensors/scan"/>
     <remap from="map" to="/map/map"/>
+    <remap from="static_map" to="/map/static_map"/>
 
   </node>
 </launch>
