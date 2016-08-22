@@ -1,0 +1,12 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <group ns="amcl">
+    <!-- start amcl -->
+    <include file="$(find avc)/launch/includes/amcl/amcl.launch.xml" />
+  </group>
+  <group ns="map">
+    <include file="$(find avc)/launch/includes/amcl/map.launch.xml" />
+  </group>
+
+</launch>
