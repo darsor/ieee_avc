@@ -28,6 +28,6 @@ magn_ellipsoid_transform: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 imu_yaw_calibration: 0.0
 
 ### gyroscope
-gyro_average_offset_x: 0.0
-gyro_average_offset_y: 0.0
-gyro_average_offset_z: 0.0
+gyro_average_offset_x: -35.49
+gyro_average_offset_y: 15.79
+gyro_average_offset_z: 20.19
