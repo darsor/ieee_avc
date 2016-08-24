@@ -1,13 +1,25 @@
 <!-- -*- mode: XML -*- -->
 <launch>
 
+  <arg name="teleop" default="false" />
+  <arg name="vesc" default="false" />
+  <arg name="sensors" default="false" />
+  <arg name="local_localization" default="false" />
+  <arg name="global_localization" default="false" />
+  <arg name="localization" default="false" />
+  <arg name="amcl" default="false" />
+  <arg name="map_server" default="false" />
+
+  <arg name="bag" default="false" />
+  <node name="bag" pkg="rosbag" type="record" args="-a" if="$(arg bag)"/>
+
   <!-- start teleop -->
-  <group ns="teleop">
+  <group ns="teleop" if="$(arg teleop)">
     <!-- joystick to ackermann command -->
     <include file="$(find avc)/launch/includes/inputs/joy_teleop.launch.xml" > </include>
   </group>
 
-  <group ns="vesc">
+  <group ns="vesc" if="$(arg vesc)">
     <!-- default (zero) ackermann command -->
     <node name="zero_ackermann_cmd" pkg="rostopic" type="rostopic" args="pub -r 4 ackermann_cmd_mux/input/default ackermann_msgs/AckermannDriveStamped '{header: auto, drive: {steering_angle: 0.0, speed: 0.0} }'" />
 
@@ -23,12 +35,12 @@
   </group>
 
   <!-- start sensors -->
-  <group ns="sensors">
+  <group ns="sensors" if="$(arg sensors)">
     <include file="$(find avc)/launch/includes/sensors/sensors.launch.xml" />
   </group>
 
   <!-- start localization -->
-  <group ns="localization">
+  <group ns="localization" if="$(arg localization)">
     <!-- start GPS navsat transform node -->
     <include file="$(find avc)/launch/includes/localization/navsat_transform.launch.xml" > </include>
   
@@ -39,11 +51,26 @@
     <include file="$(find avc)/launch/includes/localization/ekf_local_localization.launch.xml" > </include>
   </group>
 
-  <group ns="map">
+  <!-- start local localization -->
+  <group ns="localization" if="$(arg local_localization)">
+    <!-- start local robot_localization node -->
+    <include file="$(find avc)/launch/includes/localization/ekf_local_localization.launch.xml" > </include>
+  </group>
+
+  <!-- start global localization -->
+  <group ns="localization" if="$(arg global_localization)">
+    <!-- start GPS navsat transform node -->
+    <include file="$(find avc)/launch/includes/localization/navsat_transform.launch.xml" > </include>
+  
+    <!-- start absolute robot_localization node -->
+    <include file="$(find avc)/launch/includes/localization/ekf_global_localization.launch.xml" > </include>
+  </group>
+
+  <group ns="map" if="$(arg map_server)">
     <include file="$(find avc)/launch/includes/amcl/map.launch.xml" />
   </group>
 
-  <group ns="amcl">
+  <group ns="amcl" if="$(arg amcl)">
     <include file="$(find avc)/launch/includes/amcl/amcl.launch.xml" />
   </group>
 

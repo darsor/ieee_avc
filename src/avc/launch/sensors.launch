@@ -1,6 +1,9 @@
 <!-- -*- mode: XML -*- -->
 <launch>
 
+  <arg name="bag" default="false" />
+  <node name="bag" pkg="rosbag" type="record" args="-a" if="$(arg bag)"/>
+
   <group ns="sensors">
     <!-- start sensors -->
     <include file="$(find avc)/launch/includes/sensors/sensors.launch.xml" />

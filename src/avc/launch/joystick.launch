@@ -1,9 +1,0 @@
-<!-- -*- mode: XML -*- -->
-<launch>
-
-  <group ns="teleop">
-    <!-- joystick to ackermann command -->
-    <include file="$(find avc)/launch/includes/inputs/joy_teleop.launch.xml" > </include>
-  </group>
-
-</launch>
