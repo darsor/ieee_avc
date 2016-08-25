@@ -89,7 +89,7 @@ Here is a list of possible command line arguments:
 + `map_server:=true` starts the map_server node  
 
 ### Recording bag files
-All launch files can be used to create bag files. Simply add the `bag:=true` argument when you launch it. (NOTE: this only needs to be done once, so if you launch multiple bag files then only use the argument once). Once the launched nodes are killed, the .bag file can be found in the `~/.ros` directory.
+All launch files can be used to create bag files. Simply add the `bag:=true` argument when you launch it. (NOTE: this only needs to be done once, so if you start multiple launch files then only use the argument once). Once the launched nodes are killed, the .bag file can be found in the `~/.ros` directory.
   
   
 ## Configuration files  
