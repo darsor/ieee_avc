@@ -61,7 +61,7 @@ avc                                           <-- The package root directory
 The launch files are the user front-end for making things happen on the car. They are written in xml syntax. You'll notice that there is an `includes` folder inside the launch file directory. Inside there are several *.xml files (e.g. 'sensors.launch.xml'). Each one performs a very specific function, such as launching the sensor nodes, launching the localization nodes, or publishing static transforms. These are included and used by the higher-level launch files (the ones in the `launch` directory). That way, when creating a new launch file, you can include the files that do the things you want instead of re-writting all the code each time.  
 
 ### Launch file locations:  
-Launch files are located in the `ieee_avc/src/avc/launch/` directory. (Use `rosfind avc/launch` to get there)  
+Launch files are located in the `ieee_avc/src/avc/launch/` directory. (Use `roscd avc/launch` to get there)  
 
 ### How to use the launch files:  
 + `roslaunch avc sensors.launch` launches only the sensors (GPS, IMU, and Lidar) with their static_transforms
@@ -95,7 +95,7 @@ All launch files can be used to create bag files. Simply add the `bag:=true` arg
 ## Configuration files  
 Configuration files are all *.yaml files, and contain the parameters that are used by the launchfiles.  
 ### Config file locations:  
-Launch files are located in the `ieee_avc/src/avc/config/` directory. (Use `rosfind avc/config` to get there). The only exception to this is the `map.yaml` file, which is located in the `map` directory of the `avc` package.
+Launch files are located in the `ieee_avc/src/avc/config/` directory. (Use `roscd avc/config` to get there). The only exception to this is the `map.yaml` file, which is located in the `map` directory of the `avc` package.
 ### Config files: 
 + `laser.yaml` configuration for the Lidar ([link](http://wiki.ros.org/sick_tim))  
 + `gps.yaml` configuration parameters for the GPS ([link](http://wiki.ros.org/nmea_navsat_driver#Parameters-1))  
