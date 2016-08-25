@@ -1,17 +1,92 @@
 # ieee_avc  
 ### A repository for the USU AVC Team launch files and configurations  
 
-This includes code for controlling the VESC and converting Ackermann messages.  
+This includes 5 ros packages: four for the VESC (`vesc_driver`, which communicates with the VESC, `vesc_ackerman`, which converts between VESC and ackermann ROS messages, `vesc_msgs`, which contains definitions for the VESC messages, and `ackermann_cmd_mux`, which is an input multiplexer for ackermann commands), and one called `avc`. The `avc` package contains all the launch and configuration files we are using, and it is the focus of this documentation.  
 
+## Directory tree of the `avc` package
+```
+avc                                           <-- The package root directory 
+├── CMakeLists.txt  
+├── config                                    <-- The configuration files (used by launch files)  
+│   ├── amcl.yaml  
+│   ├── ekf_global.yaml  
+│   ├── ekf_local.yaml  
+│   ├── gps.yaml  
+│   ├── imu.yaml  
+│   ├── joy_teleop.yaml  
+│   ├── laser.yaml  
+│   ├── mux.yaml  
+│   └── vesc.yaml  
+├── launch                                    <-- The launch files
+│   ├── amcl.launch  
+│   ├── includes                              <-- Modular XML files used by the launch files
+│   │   ├── amcl  
+│   │   │   ├── amcl.launch.xml  
+│   │   │   └── map.launch.xml  
+│   │   ├── inputs  
+│   │   │   └── joy_teleop.launch.xml  
+│   │   ├── localization  
+│   │   │   ├── ekf_global_localization.launch.xml  
+│   │   │   ├── ekf_local_localization.launch.xml  
+│   │   │   └── navsat_transform.launch.xml  
+│   │   ├── sensors  
+│   │   │   ├── sensors.launch.xml  
+│   │   │   └── static_transforms.launch.xml  
+│   │   └── vesc  
+│   │       └── vesc.launch.xml  
+│   ├── localization.launch  
+│   ├── master.launch  
+│   ├── sensors.launch  
+│   └── teleop.launch  
+├── map                                       <-- The map and its configuration
+│   ├── map.pgm  
+│   └── map.yaml  
+└── package.xml  
+```
+  
 ## Launch files  
 The launch files are the user front-end for making things happen on the car. They are written in xml syntax. You'll notice that there is an `includes` folder inside the launch file directory. Inside there are several *.xml files (e.g. 'sensors.launch.xml'). Each one performs a very specific function, such as launching the sensor nodes, launching the localization nodes, or publishing static transforms. These are included and used by the higher-level launch files (the ones in the `launch` directory). That way, when creating a new launch file, you can include the files that do the things you want instead of re-writting all the code each time.  
+
 ### Launch file locations:  
 Launch files are located in the `ieee_avc/src/avc/launch/` directory. (Use `rosfind avc/launch` to get there)  
-### How to use the launch files:  
-`roslaunch avc sensors.launch` launches only the sensors (GPS, IMU, and Lidar) with their static_transforms
-`roslaunch avc teleop.launch` launches teleop (joystick controller and vesc to drive the car around)
-`roslaunch avc localization.launch` launches global and local localization nodes  
-`roslaunch avc amcl.launch` launches global and local localization nodes  
 
-### Configuration files  
-Configuration files are stored in the `config` directory of the AVC package. They are all *.yaml files, and contain the parameters that will be used by the launchfiles.  
+### How to use the launch files:  
++ `roslaunch avc sensors.launch` launches only the sensors (GPS, IMU, and Lidar) with their static_transforms
++ `roslaunch avc teleop.launch` launches teleop (joystick controller and vesc to drive the car around)
++ `roslaunch avc localization.launch` launches global and local localization nodes  
++ `roslaunch avc amcl.launch` launches global and local localization nodes  
+
+Several of these launch files can be run simultaneously (for example, if you want to run teleop with sensors, you could run both of the launch files).  
+
+
+### The master launch file:  
+There is one more launch file called `master.launch`. This launch file is configurable via command line to run whatever you want. For example, running  
+
+```roslaunch avc master.launch teleop:=true vesc:=true sensors:=true local_localization:=true```  
+
+will start the teleop, launch the sensor nodes, and start just the local localization node.  
+Here is a list of possible command line arguments:  
++ `teleop:=true` starts the joystick nodes that provide teleop commands (does **not** start the vesc driver, only the joystick)  
++ `vesc:=true` starts the vesc driver node and ackermann command multiplexer (for example, use with the `teleop` option to be able to drive the car around with the controller.  
++ `sensors:=true` starts the IMU, GPS, and Lidar nodes  
++ `localization:=true` starts local and global localization nodes (undefined behavior if used with the individual local or global localization arguments)  
++ `local_localization:=true` starts only the local localization node (undefined behavior if used with any other localization arguments)  
++ `global_localization:=true` starts only the global localization node (undefined behavior if used with any other localization arguments)  
++ `amcl:=true` starts the amcl node  
++ `map_server:=true` starts the map_server node  
+  
+  
+## Configuration files  
+Configuration files are all *.yaml files, and contain the parameters that are used by the launchfiles.  
+### Config file locations:  
+Launch files are located in the `ieee_avc/src/avc/config/` directory. (Use `rosfind avc/config` to get there)  
+### Config files: 
++ `laser.yaml` configuration for the Lidar  
++ `gps.yaml` configuration parameters for the GPS  
++ `imu.yaml` configuratino parameters for the IMU  
++ `vesc.yaml` configuration for the VESC  
++ `amcl.yaml` filter parameters for the AMCL algorithm 
++ `ekf_global.yaml` configuration parameters for the global localization algorithm  
++ `efk_local.yaml` configuration parameters for the local localization algorithm  
++ `joy_teleop.yaml`  configuration for the node that transforms the joystick messages into ackermann messages 
++ `mux.yaml` configuration for the ackermann command multiplexer  
