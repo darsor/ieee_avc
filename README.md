@@ -3,7 +3,18 @@
 
 This includes 5 ros packages: four for the VESC (`vesc_driver`, which communicates with the VESC, `vesc_ackerman`, which converts between VESC and ackermann ROS messages, `vesc_msgs`, which contains definitions for the VESC messages, and `ackermann_cmd_mux`, which is an input multiplexer for ackermann commands), and one called `avc`. The `avc` package contains all the launch and configuration files we are using, and it is the focus of this documentation.  
 
-Here is a [picture](https://drive.google.com/open?id=0B6Ak-1eCXMiBMmItdGhSRnpRVDQ) of the system setup.  
+Here is a [diagram](https://drive.google.com/open?id=0B6Ak-1eCXMiBMmItdGhSRnpRVDQ) of the system setup.  
+
+### Table of Contents  
+1. [Directory Tree](https://github.com/darsor/ieee_avc#directory-tree-of-the-avc-package)  
+2. [Launch Files](https://github.com/darsor/ieee_avc#launch-files)  
+  2.1 [Launch File Locations](https://github.com/darsor/ieee_avc#launch-file-locations)  
+  2.2 [How to use the Launch Files](https://github.com/darsor/ieee_avc#how-to-use-the-launch-files)  
+  2.3 [The Master Launch File](https://github.com/darsor/ieee_avc#the-master-launch-file)  
+  2.4 [Recording Bag Files](https://github.com/darsor/ieee_avc#recording-bag-files)  
+3. [Configuration Files](https://github.com/darsor/ieee_avc#configuration-files)  
+  3.1 [Config File Locations](https://github.com/darsor/ieee_avc#config-file-locations)  
+  3.2 [Config File Descriptions](https://github.com/darsor/ieee_avc#config-files)  
 
 ## Directory tree of the `avc` package
 ```
@@ -77,21 +88,22 @@ Here is a list of possible command line arguments:
 + `amcl:=true` starts the amcl node  
 + `map_server:=true` starts the map_server node  
 
-## Recording bag files
+### Recording bag files
 All launch files can be used to create bag files. Simply add the `bag:=true` argument when you launch it. (NOTE: this only needs to be done once, so if you launch multiple bag files then only use the argument once). Once the launched nodes are killed, the .bag file can be found in the `~/.ros` directory.
   
   
 ## Configuration files  
 Configuration files are all *.yaml files, and contain the parameters that are used by the launchfiles.  
 ### Config file locations:  
-Launch files are located in the `ieee_avc/src/avc/config/` directory. (Use `rosfind avc/config` to get there)  
+Launch files are located in the `ieee_avc/src/avc/config/` directory. (Use `rosfind avc/config` to get there). The only exception to this is the `map.yaml` file, which is located in the `map` directory of the `avc` package.
 ### Config files: 
-+ `laser.yaml` configuration for the Lidar  
-+ `gps.yaml` configuration parameters for the GPS  
-+ `imu.yaml` configuratino parameters for the IMU  
++ `laser.yaml` configuration for the Lidar ([link](http://wiki.ros.org/sick_tim))  
++ `gps.yaml` configuration parameters for the GPS ([link](http://wiki.ros.org/nmea_navsat_driver#Parameters-1))  
++ `imu.yaml` configuration parameters for the IMU ([link](http://wiki.ros.org/razor_imu_9dof#Sensor_Calibration))  
 + `vesc.yaml` configuration for the VESC  
-+ `amcl.yaml` filter parameters for the AMCL algorithm 
-+ `ekf_global.yaml` configuration parameters for the global localization algorithm  
-+ `efk_local.yaml` configuration parameters for the local localization algorithm  
-+ `joy_teleop.yaml`  configuration for the node that transforms the joystick messages into ackermann messages 
++ `amcl.yaml` filter parameters for the AMCL algorithm ([link](http://wiki.ros.org/amcl#Parameters))  
++ `ekf_global.yaml` configuration parameters for the global localization algorithm ([link](http://wiki.ros.org/robot_localization#Parameters))  
++ `efk_local.yaml` configuration parameters for the local localization algorithm ([link](http://wiki.ros.org/robot_localization#Parameters))  
++ `joy_teleop.yaml`  configuration for the node that transforms the joystick messages into ackermann messages ([link](http://wiki.ros.org/joy_teleop#Parameters))  
 + `mux.yaml` configuration for the ackermann command multiplexer  
++ `map.yaml` map parameters (automatically generated with the map) ([link](http://wiki.ros.org/map_server#YAML_format))  
