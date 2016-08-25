@@ -67,7 +67,7 @@ Launch files are located in the `ieee_avc/src/avc/launch/` directory. (Use `rosf
 + `roslaunch avc sensors.launch` launches only the sensors (GPS, IMU, and Lidar) with their static_transforms
 + `roslaunch avc teleop.launch` launches teleop (joystick controller and vesc to drive the car around)
 + `roslaunch avc localization.launch` launches global and local localization nodes  
-+ `roslaunch avc amcl.launch` launches global and local localization nodes  
++ `roslaunch avc amcl.launch` launches amcl and map_server nodes  
 
 Several of these launch files can be run simultaneously (for example, if you want to run teleop with sensors, you could run both of the launch files).  
 
