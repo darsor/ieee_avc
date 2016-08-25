@@ -3,6 +3,8 @@
 
 This includes 5 ros packages: four for the VESC (`vesc_driver`, which communicates with the VESC, `vesc_ackerman`, which converts between VESC and ackermann ROS messages, `vesc_msgs`, which contains definitions for the VESC messages, and `ackermann_cmd_mux`, which is an input multiplexer for ackermann commands), and one called `avc`. The `avc` package contains all the launch and configuration files we are using, and it is the focus of this documentation.  
 
+Here is a [picture](https://drive.google.com/open?id=0B6Ak-1eCXMiBMmItdGhSRnpRVDQ) of the system setup.  
+
 ## Directory tree of the `avc` package
 ```
 avc                                           <-- The package root directory 
@@ -74,6 +76,9 @@ Here is a list of possible command line arguments:
 + `global_localization:=true` starts only the global localization node (undefined behavior if used with any other localization arguments)  
 + `amcl:=true` starts the amcl node  
 + `map_server:=true` starts the map_server node  
+
+## Recording bag files
+All launch files can be used to create bag files. Simply add the `bag:=true` argument when you launch it. (NOTE: this only needs to be done once, so if you launch multiple bag files then only use the argument once). Once the launched nodes are killed, the .bag file can be found in the `~/.ros` directory.
   
   
 ## Configuration files  
