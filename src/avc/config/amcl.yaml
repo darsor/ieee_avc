@@ -128,7 +128,7 @@ odom_alpha1: 0.4        #(double, default: 0.2)
 odom_alpha2: 0.4        #(double, default: 0.2)
     #Specifies the expected noise in odometry's rotation estimate from translational component of the robot's motion. 
 
-odom_alpha3: 0.3        #(double, default: 0.2)
+odom_alpha3: 0.5        #(double, default: 0.2)
     #Specifies the expected noise in odometry's translation estimate from the translational component of the robot's motion. 
 
 odom_alpha4: 1          #(double, default: 0.2)
