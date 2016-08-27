@@ -22,9 +22,6 @@
     <!-- start electronic speed controller driver -->
     <include file="$(find avc)/launch/includes/vesc/vesc.launch.xml" > </include>
 
-    <!-- start espeak -->
-    <include file="$(find avc)/launch/includes/espeak/espeak.launch.xml" > </include>
-
   </group>
 
 </launch>
