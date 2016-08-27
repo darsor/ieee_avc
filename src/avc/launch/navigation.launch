@@ -13,4 +13,10 @@
     <param name="recovery_behavior_enabled" value="false" />
   </node>
 
+  <node pkg="avc" type="cmd_vel_to_ackermann_drive.py" name="cmd_vel_to_ackermann_drive" output="screen">
+    <param name="twist_cmd_topic" value="/cmd_vel" />
+    <param name="ackermann_cmd_topic" value="/vesc/ackermann_cmd_mux/input/navigation" />
+    <param name="wheelbase" value="0.33" />
+  </node>
+
 </launch>
