@@ -23,25 +23,31 @@ world_frame: odom
 
 # VESC odometry
 odom0: /vesc/odom
+# config guide = [X, Y, Z,
+#                 roll, pitch, yaw,
+#                 X velocity, Y velocity, Z velocity,
+#                 roll velocity, pitch velocity, yaw velocity,
+#                 X acceleration, Y acceleration, Z acceleration]
 odom0_config: [false, false, false,
-               false, false, false,
+               false, false, true,
                true , true , false,
-               false, false, true ,
+               false, false, false,
                false, false, false]
 odom0_differential: false
 odom0_relative: false
 odom0_queue_size: 2
-odom0_pose_rejection_threshold: 5
-odom0_twist_rejection_threshold: 1
+###NOTE: These threshold values don't work. It is better to use default values.
+#odom0_pose_rejection_threshold: 5
+#odom0_twist_rejection_threshold: 1
 odom0_nodelay: false
 
 # IMU data
 imu0: /sensors/imu
 imu0_config: [false, false, false,
-              true , true , true , # magnetometer
+              false, false, false, # magnetometer
               false, false, false,
-              true , true , true , # gyroscope
-              true , false, true]  # accelerometer
+              false, false, true , # gyroscope
+              true , false, false]  # accelerometer
 imu0_nodelay: false
 imu0_differential: false
 imu0_relative: false
