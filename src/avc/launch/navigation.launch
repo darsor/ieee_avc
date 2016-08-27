@@ -1,0 +1,16 @@
+<launch>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find avc)/config/nav/costmap_common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find avc)/config/nav/costmap_common.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find avc)/config/nav/costmap_local.yaml" command="load" />
+    <rosparam file="$(find avc)/config/nav/costmap_global.yaml" command="load" />
+    <rosparam file="$(find avc)/config/nav/local_planner.yaml" command="load" />
+
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    <param name="controller_frequency" value="10.0" />
+    <param name="clearing_rotation_allowed" value="false" />
+    <param name="recovery_behavior_enabled" value="false" />
+  </node>
+
+</launch>
