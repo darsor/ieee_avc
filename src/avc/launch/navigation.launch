@@ -1,6 +1,8 @@
 <launch>
 
+  <remap from="map" to="/map/map" />
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <remap from="map_server" to="/map/map_server" />
     <rosparam file="$(find avc)/config/nav/costmap_common.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find avc)/config/nav/costmap_common.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find avc)/config/nav/costmap_local.yaml" command="load" />

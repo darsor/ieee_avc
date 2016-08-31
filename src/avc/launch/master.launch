@@ -9,6 +9,7 @@
   <arg name="localization" default="false" />
   <arg name="amcl" default="false" />
   <arg name="map_server" default="false" />
+  <arg name="nav" default="false" />
 
   <arg name="bag" default="false" />
   <node name="bag" pkg="rosbag" type="record" args="-a" if="$(arg bag)"/>
@@ -72,6 +73,27 @@
 
   <group ns="amcl" if="$(arg amcl)">
     <include file="$(find avc)/launch/includes/amcl/amcl.launch.xml" />
+  </group>
+
+  <group if="$(arg nav)">
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      <rosparam file="$(find avc)/config/nav/costmap_common.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find avc)/config/nav/costmap_common.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find avc)/config/nav/costmap_local.yaml" command="load" />
+      <rosparam file="$(find avc)/config/nav/costmap_global.yaml" command="load" />
+      <rosparam file="$(find avc)/config/nav/local_planner.yaml" command="load" />
+  
+      <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+      <param name="controller_frequency" value="10.0" />
+      <param name="clearing_rotation_allowed" value="false" />
+      <param name="recovery_behavior_enabled" value="false" />
+    </node>
+  
+    <node pkg="avc" type="cmd_vel_to_ackermann_drive.py" name="cmd_vel_to_ackermann_drive" output="screen">
+      <param name="twist_cmd_topic" value="/cmd_vel" />
+      <param name="ackermann_cmd_topic" value="/vesc/ackermann_cmd_mux/input/navigation" />
+      <param name="wheelbase" value="0.33" />
+    </node>
   </group>
 
 </launch>
