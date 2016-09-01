@@ -77,7 +77,7 @@ laser_max_range: 10         #(double, default: -1.0)
     #Maximum scan range to be considered; -1.0 will cause the laser's reported maximum range to be used. 
 
 ###NOTE: this can be reduced to make it run faster (if it's not realtime)
-laser_max_beams: 100        #(int, default: 30)
+laser_max_beams: 30        #(int, default: 30)
     #How many evenly-spaced beams in each scan to be used when updating the filter. 
 
 #laser_z_hit:           #(double, default: 0.95)
