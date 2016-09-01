@@ -1,7 +1,7 @@
 
 # erpm (electrical rpm) = 4422 * speed (meters / second) + 60
 speed_to_erpm_gain: 4422.0
-speed_to_erpm_offset: 60.0
+speed_to_erpm_offset: 0.0
 
 # servo value (0 to 1) =  -0.917 * steering angle (radians) + 0.5
 steering_angle_to_servo_gain: -0.917
