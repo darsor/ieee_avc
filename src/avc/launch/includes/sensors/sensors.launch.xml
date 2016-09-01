@@ -17,9 +17,9 @@
   </node>
 
   <!-- gps -->
-  <arg name="gps_config" default="$(find avc)/config/gps.yaml" />
+<!--  <arg name="gps_config" default="$(find avc)/config/gps.yaml" />
   <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="gps_node" output="screen">
     <rosparam file="$(arg gps_config)" command="load" />
-  </node>
+  </node> -->
 
 </launch>
