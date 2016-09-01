@@ -86,9 +86,8 @@
       <rosparam file="$(find avc)/config/nav/local_planner.yaml" command="load" />
   
       <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
-      <param name="controller_frequency" value="2.0" />
+      <param name="controller_frequency" value="10.0" />
       <param name="clearing_rotation_allowed" value="false" />
-      <param name="recovery_behavior_enabled" value="false" />
     </node>
   
     <node pkg="avc" type="cmd_vel_to_ackermann_drive.py" name="cmd_vel_to_ackermann_drive" output="screen">
