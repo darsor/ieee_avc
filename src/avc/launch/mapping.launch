@@ -1,0 +1,12 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen">
+    <remap from="scan" to="/sensors/scan" />
+    <param name="xmin" value="-8.0" />
+    <param name="ymin" value="-8.0" />
+    <param name="xmax" value="8.0" />
+    <param name="ymax" value="8.0" />
+  </node>
+
+</launch>
