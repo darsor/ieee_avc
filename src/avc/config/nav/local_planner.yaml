@@ -1,6 +1,6 @@
 TebLocalPlannerROS:
 
- odom_topic: odom
+ odom_topic: /localization/odometry/local/filtered
     
  # Trajectory
   
@@ -22,7 +22,7 @@ TebLocalPlannerROS:
  # ********************** Carlike robot parameters ********************
  min_turning_radius: 0.53       # Min turning radius of the carlike robot (compute value using a model or adjust with rqt_reconfigure manually)
  wheelbase: 0.33                # Wheelbase of our robot
- cmd_angle_instead_rotvel: True # stage simulator takes the angle instead of the rotvel as input (twist message)
+ cmd_angle_instead_rotvel: False # stage simulator takes the angle instead of the rotvel as input (twist message)
  # ********************************************************************
 
  footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
@@ -46,8 +46,8 @@ TebLocalPlannerROS:
     
  min_obstacle_dist: 0.25 # This value must also include our robot's expansion, since footprint_model is set to "line".
  include_costmap_obstacles: True
- costmap_obstacles_behind_robot_dist: 1.0
- obstacle_poses_affected: 30
+ costmap_obstacles_behind_robot_dist: 0.8
+ obstacle_poses_affected: 15
  costmap_converter_plugin: ""
  costmap_converter_spin_thread: True
  costmap_converter_rate: 5
@@ -72,10 +72,10 @@ TebLocalPlannerROS:
 
  # Homotopy Class Planner
 
- enable_homotopy_class_planning: False
+ enable_homotopy_class_planning: True
  enable_multithreading: True
  simple_exploration: False
- max_number_classes: 4
+ max_number_classes: 3
  selection_cost_hysteresis: 1.0
  selection_obst_cost_scale: 1.0
  selection_alternative_time_cost: False
