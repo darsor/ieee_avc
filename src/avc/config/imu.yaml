@@ -4,30 +4,30 @@ port: /dev/ttyUSB0
 ##### Calibration ####
 ### accelerometer
 accel_x_min: -275.0
-accel_x_max: 252.0
-accel_y_min: -259.0
-accel_y_max: 268.0
-accel_z_min: -271.0
-accel_z_max: 244.0
+accel_x_max: 254.0
+accel_y_min: -257.0
+accel_y_max: 267.0
+accel_z_min: -275.0
+accel_z_max: 245.0
 
 ### magnetometer
 # standard calibration
-magn_x_min: -600.0
-magn_x_max: 600.0
-magn_y_min: -600.0
-magn_y_max: 600.0
-magn_z_min: -600.0
-magn_z_max: 600.0
+#magn_x_min: -600.0
+#magn_x_max: 600.0
+#magn_y_min: -600.0
+#magn_y_max: 600.0
+#magn_z_min: -600.0
+#magn_z_max: 600.0
 
 # extended calibration
 calibration_magn_use_extended: true
-magn_ellipsoid_center: [145.522, 34.9572, -309.652]
-magn_ellipsoid_transform: [[0.910677, 0.0203448, -0.00335896], [0.0203448, 0.946875, 0.0531112], [-0.00335896, 0.0531112, 0.943366]]
+magn_ellipsoid_center: [142.415, -58.8213, -117.699]
+magn_ellipsoid_transform: [[0.934490, -0.0132499, 0.0163636], [-0.0132499, 0.968349, 0.00775687], [0.0163636, 0.00775687, 0.995230]]
 
 # AHRS to robot calibration
 imu_yaw_calibration: 0.0
 
 ### gyroscope
-gyro_average_offset_x: -35.49
-gyro_average_offset_y: 15.79
-gyro_average_offset_z: 20.19
+gyro_average_offset_x: -36.22
+gyro_average_offset_y: 36.83
+gyro_average_offset_z: -33.17
