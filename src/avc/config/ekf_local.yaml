@@ -36,7 +36,7 @@ odom0_config: [false, false, false,
 odom0_differential: false
 odom0_relative: false
 odom0_queue_size: 2
-###NOTE: These threshold values don't work. It is better to use default values.
+###NOTE: These threshold values don't work. It is better to use default values for now.
 #odom0_pose_rejection_threshold: 5
 #odom0_twist_rejection_threshold: 1
 odom0_nodelay: false

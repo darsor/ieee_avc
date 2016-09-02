@@ -14,10 +14,10 @@
 #kld_z:                 #(double, default: 0.99)
     #Upper standard normal quantile for (1 - p), where p is the probability that the error on the estimated distrubition will be less than kld_err. 
 
-#update_min_d:              #(double, default: 0.2 meters)
+update_min_d: 0.2             #(double, default: 0.2 meters)
     #Translational movement required before performing a filter update. 
 
-#update_min_a:              #(double, default: π/6.0 radians)
+update_min_a: 1.0             #(double, default: π/6.0 radians)
     #Rotational movement required before performing a filter update. 
 
 #resample_interval:             #(int, default: 2)
@@ -122,7 +122,7 @@ odom_model_type: "diff" #(string, default: "diff")
     #Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected". 
 
 ###NOTE: Here's a resource for tuning odom_alpha parameters: http://answers.ros.org/question/32961/amcl-odom_alpha-parameters/
-odom_alpha1: 0.4        #(double, default: 0.2)
+odom_alpha1: 0.8        #(double, default: 0.2)
     #Specifies the expected noise in odometry's rotation estimate from the rotational component of the robot's motion. 
 
 odom_alpha2: 0.4        #(double, default: 0.2)
