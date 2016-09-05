@@ -10,7 +10,7 @@
   <arg name="config_file"           default="$(find ackermann_cmd_mux)/param/example.yaml"/>
   
   <!-- nodelet manager -->
-  <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager_name)" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager_name)" args="manager" respawn="true" />
   
   <!-- ackermann command mulitplexer -->
   <include file="$(find ackermann_cmd_mux)/launch/ackermann_cmd_mux.launch">
