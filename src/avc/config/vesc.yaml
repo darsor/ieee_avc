@@ -8,7 +8,7 @@ steering_angle_to_servo_gain: -0.917
 steering_angle_to_servo_offset: 0.5
 
 # publish odom to base link tf
-vesc_to_odom/publish_tf: false
+vesc_to_odom/publish_tf: true
 
 # car wheelbase is about 33cm (distance between axles)
 wheelbase: .33
@@ -21,7 +21,7 @@ vesc_driver:
   current_max: 0.0
   brake_min: 0.0
   brake_max: 0.0
-  speed_min: -8000
+  speed_min: -9000
   speed_max: 20000
   position_min: 0.0
   position_max: 0.0

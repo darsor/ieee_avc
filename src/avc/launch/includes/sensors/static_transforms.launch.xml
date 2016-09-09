@@ -1,13 +1,13 @@
 <!-- -*- mode: XML -*- -->
 <launch>
 
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu" 
+ <!-- 
+ <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu" 
         args="0.03109 0.0 0.07083    3.14159 0.0 0.0 /base_link /base_imu_link 100" />
-
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" 
-        args="0.285 0.0 0.127 0.0 0.0 0.0 1.0 /base_link /base_link_laser 100" />
-
   <node pkg="tf" type="static_transform_publisher" name="base_link_to_gps" 
         args="0.0 0.0 0.0     0.0 0.0 0.0 1.0 /base_link /base_link_gps 100" />
+ -->
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" 
+        args="0.285 0.0 0.127 0.0 0.0 0.0 1.0 /base_link /base_link_laser 100" />
 
 </launch>

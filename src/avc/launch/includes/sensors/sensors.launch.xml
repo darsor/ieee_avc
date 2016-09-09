@@ -4,11 +4,11 @@
   <!-- start static transforms -->
   <include file="$(find avc)/launch/includes/sensors/static_transforms.launch.xml" />
 
-  <!-- imu -->
+  <!-- imu
   <arg name="imu_config" default="$(find avc)/config/imu.yaml" />
   <node pkg="razor_imu_9dof" type="imu_node.py" name="imu_node" output="screen">
     <rosparam file="$(arg imu_config)" command="load" />
-  </node>
+  </node> -->
 
   <!-- laser -->
   <arg name="laser_config" default="$(find avc)/config/laser.yaml" />

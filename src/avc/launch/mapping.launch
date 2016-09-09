@@ -9,7 +9,6 @@
     <param name="xmax" value="8.0" />
     <param name="ymax" value="8.0" />
     <param name="delta" value="0.1" />
-    <param name="stt" value="0.4" />
   </node>
 
 </launch>
