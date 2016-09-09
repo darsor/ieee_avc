@@ -1,0 +1,27 @@
+<launch>
+
+  <group ns="vesc" if="$(arg vesc)">
+    <!-- priority-based command multiplexer -->
+    <include file="$(find ackermann_cmd_mux)/launch/standalone.launch">
+      <arg name="nodelet_manager_name" value="ackermann_cmd_mux_nodelet_manager" />
+      <arg name="config_file" value="$(find avc)/config/mux.yaml" />
+    </include>
+
+    <!-- start electronic speed controller driver -->
+    <include file="$(find avc)/launch/includes/vesc/vesc.launch.xml" > </include>
+  </group>
+
+  <!-- start sensors -->
+  <group ns="sensors" if="$(arg sensors)">
+    <include file="$(find avc)/launch/includes/sensors/sensors.launch.xml" />
+  </group>
+
+  <group ns="map" if="$(arg map_server)">
+    <include file="$(find avc)/launch/includes/amcl/map.launch.xml" />
+  </group>
+
+  <group ns="amcl" if="$(arg amcl)">
+    <include file="$(find avc)/launch/includes/amcl/amcl.launch.xml" />
+  </group>
+
+</launch>

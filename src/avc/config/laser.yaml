@@ -1,4 +1,4 @@
 frame_id: base_link_laser
-hostname: 192.168.0.1
+hostname: 192.168.0.10
 port: 2112
 timelimit: 5
