@@ -1,0 +1,25 @@
+<launch>
+
+  <!-- start teleop -->
+  <group ns="teleop">
+    <!-- joystick to ackermann command -->
+    <include file="$(find avc)/launch/includes/inputs/joy_teleop.launch.xml" > </include>
+  </group>
+
+  <group ns="vesc">
+    <!-- default (zero) ackermann command -->
+    <node name="zero_ackermann_cmd" pkg="rostopic" type="rostopic" args="pub -r 4 ackermann_cmd_mux/input/default ackermann_msgs/AckermannDriveStamped '{header: auto, drive: {steering_angle: 0.0, speed: 0.0} }'" />
+  </group>
+
+  <node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen">
+    <remap from="scan" to="/sensors/scan" />
+    <remap from="odom" to="/localization/odometry/local/filtered" />
+    <param name="xmin" value="-8.0" />
+    <param name="ymin" value="-8.0" />
+    <param name="xmax" value="8.0" />
+    <param name="ymax" value="8.0" />
+    <param name="delta" value="0.1" />
+    <param name="stt" value="0.4" />
+  </node>
+
+</launch>
