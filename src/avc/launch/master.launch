@@ -79,11 +79,8 @@
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
       <remap from="map" to="/map/map"/>
       <remap from="static_map" to="/map/static_map"/>
-  
-      <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
-      <param name="controller_frequency" value="10.0" />
-      <param name="clearing_rotation_allowed" value="false" />
 
+      <rosparam file="$(find avc)/config/nav/move_base.yaml" command="load" />
       <rosparam file="$(find avc)/config/nav/costmap_common.yaml" command="load" ns="global_costmap" />
       <rosparam file="$(find avc)/config/nav/costmap_common.yaml" command="load" ns="local_costmap" />
       <rosparam file="$(find avc)/config/nav/costmap_local.yaml" command="load" />

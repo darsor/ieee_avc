@@ -1,6 +1,6 @@
 <launch>
 
-  <group ns="vesc" if="$(arg vesc)">
+  <group ns="vesc">
     <!-- priority-based command multiplexer -->
     <include file="$(find ackermann_cmd_mux)/launch/standalone.launch">
       <arg name="nodelet_manager_name" value="ackermann_cmd_mux_nodelet_manager" />
@@ -12,15 +12,15 @@
   </group>
 
   <!-- start sensors -->
-  <group ns="sensors" if="$(arg sensors)">
+  <group ns="sensors">
     <include file="$(find avc)/launch/includes/sensors/sensors.launch.xml" />
   </group>
 
-  <group ns="map" if="$(arg map_server)">
+  <group ns="map">
     <include file="$(find avc)/launch/includes/amcl/map.launch.xml" />
   </group>
 
-  <group ns="amcl" if="$(arg amcl)">
+  <group ns="amcl">
     <include file="$(find avc)/launch/includes/amcl/amcl.launch.xml" />
   </group>
 
