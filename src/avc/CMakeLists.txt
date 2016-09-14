@@ -4,7 +4,7 @@ project(avc)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED roscpp actionlib)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -79,6 +79,8 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES racecar_launch
   CATKIN_DEPENDS
+    roscpp
+    actionlib
     razor_imu_9dof
     tf
     tf2_ros
@@ -110,16 +112,16 @@ catkin_package(
 # )
 
 ## Declare a cpp executable
-# add_executable(racecar_launch_node src/racecar_launch_node.cpp)
+add_executable(nav_goals nodes/nav_goals.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(racecar_launch_node racecar_launch_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(racecar_launch_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(nav_goals
+   ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
