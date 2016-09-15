@@ -14,16 +14,16 @@
 #kld_z:                 #(double, default: 0.99)
     #Upper standard normal quantile for (1 - p), where p is the probability that the error on the estimated distrubition will be less than kld_err. 
 
-update_min_d: 0.2             #(double, default: 0.2 meters)
+update_min_d: 0.1             #(double, default: 0.2 meters)
     #Translational movement required before performing a filter update. 
 
-update_min_a: 1.0             #(double, default: π/6.0 radians)
+update_min_a: 0.5             #(double, default: π/6.0 radians)
     #Rotational movement required before performing a filter update. 
 
 #resample_interval:             #(int, default: 2)
     #Number of filter updates required before resampling. 
 
-#transform_tolerance:            #(double, default: 0.1 seconds)
+transform_tolerance: 0.7          #(double, default: 0.1 seconds)
     #Time with which to post-date the transform that is published, to indicate that this transform is valid into the future. 
 
 #recovery_alpha_slow:            #(double, default: 0.0 (disabled))
@@ -73,7 +73,7 @@ first_map_only: false           #(bool, default: false)
 laser_min_range: 0.5        #(double, default: -1.0)
     #Minimum scan range to be considered; -1.0 will cause the laser's reported minimum range to be used. 
 
-laser_max_range: 10         #(double, default: -1.0)
+laser_max_range: 9         #(double, default: -1.0)
     #Maximum scan range to be considered; -1.0 will cause the laser's reported maximum range to be used. 
 
 ###NOTE: this can be reduced to make it run faster (if it's not realtime)
@@ -122,16 +122,16 @@ odom_model_type: "diff" #(string, default: "diff")
     #Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected". 
 
 ###NOTE: Here's a resource for tuning odom_alpha parameters: http://answers.ros.org/question/32961/amcl-odom_alpha-parameters/
-odom_alpha1: 0.8        #(double, default: 0.2)
+odom_alpha1: 0.6        #(double, default: 0.2)
     #Specifies the expected noise in odometry's rotation estimate from the rotational component of the robot's motion. 
 
-odom_alpha2: 0.4        #(double, default: 0.2)
+odom_alpha2: 0.7        #(double, default: 0.2)
     #Specifies the expected noise in odometry's rotation estimate from translational component of the robot's motion. 
 
-odom_alpha3: 0.5        #(double, default: 0.2)
+odom_alpha3: 0.2        #(double, default: 0.2)
     #Specifies the expected noise in odometry's translation estimate from the translational component of the robot's motion. 
 
-odom_alpha4: 1          #(double, default: 0.2)
+odom_alpha4: 0.2        #(double, default: 0.2)
     #Specifies the expected noise in odometry's translation estimate from the rotational component of the robot's motion. 
 
 #odom_alpha5:           #(double, default: 0.2)
