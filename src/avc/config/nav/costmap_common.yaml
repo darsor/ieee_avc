@@ -4,9 +4,17 @@ raytrace_range: 3.0
 footprint: [[-0.27, -0.145], [-0.27, 0.145], [0.27, 0.145], [0.27, -0.145]]
 inflation_radius: 0.5
 transform_tolerance: 0.3
-publish_frequency: 2.0
-track_unknown_space: true
+publish_frequency: 2
 
 # Sometimes, its useful to be able to run navigation solely in the odometric frame. To do this, I find the easiest thing to do is to copy my local_costmap_params.yaml file over my global_costmap_params.yaml file and change the the width and height of the map to be something more like 10 meters. This is a really easy way to get things up and running if you want to tune navigation independent of localization performance. 
+
+observation_sources: laser_scan_sensor #point_cloud_sensor
+
+laser_scan_sensor: {sensor_frame: /base_link_laser,
+                    data_type: LaserScan,
+                    topic: /sensors/scan,
+                    marking: true,
+                    clearing: true,
+                    expected_update_rate: 0.15}
 
 #point_cloud_sensor: {sensor_frame: frame_name, data_type: PointCloud, topic: topic_name, marking: true, clearing: true}

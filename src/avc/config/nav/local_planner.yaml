@@ -5,7 +5,7 @@ TebLocalPlannerROS:
  # Trajectory
   
  teb_autosize: True
- dt_ref: 0.3
+ dt_ref: 0.4
  dt_hysteresis: 0.1
  global_plan_overwrite_orientation: True
  max_global_plan_lookahead_dist: 3.0
@@ -16,8 +16,8 @@ TebLocalPlannerROS:
  max_vel_x: 2.0
  max_vel_x_backwards: 1.0
  max_vel_theta: 0.34 # the angular velocity is also bounded by min_turning_radius in case of a carlike robot (r = v / omega)
- acc_lim_x: 0.5
- acc_lim_theta: 0.5
+ acc_lim_x: 2.0
+ acc_lim_theta: 1.0
 
  # ********************** Carlike robot parameters ********************
  min_turning_radius: 0.53       # Min turning radius of the carlike robot (compute value using a model or adjust with rqt_reconfigure manually)
