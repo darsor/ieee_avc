@@ -12,14 +12,12 @@
   </group>
 
   <node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen">
-    <remap from="scan" to="/sensors/scan" />
-    <remap from="odom" to="/localization/odometry/local/filtered" />
+    <remap from="odom" to="/vesc/odom" />
     <param name="xmin" value="-8.0" />
     <param name="ymin" value="-8.0" />
     <param name="xmax" value="8.0" />
     <param name="ymax" value="8.0" />
     <param name="delta" value="0.1" />
-    <param name="stt" value="0.4" />
   </node>
 
 </launch>
